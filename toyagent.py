@@ -220,7 +220,7 @@ def process_api_response(history: List[Dict[str, Any]], response: openai.types.c
 def create_system_prompt(task_description: str) -> Dict[str, str]:
     tool_names = ', '.join(agent_tools.TOOL_EXECUTORS.keys())
     memory_instructions = (
-        "You also have access to a node-based memory system to persist and recall information across sessions. Assume prior memories exist."
+        "You also have access to a node-based memory system to persist and recall information across sessions. Assume prior memories exist.  If the user tell you something you think is important: remember it."
         "Use these tools to manage this memory:\n"
         "- `create_memory_node`: To store a new piece of information. Assign relevant tags (e.g., 'project:alpha', 'user_preference:color_blue', 'concept:quantum_physics').\n"
         "- `retrieve_memory_nodes`: To search for information using tags. It returns nodes that match ALL provided tags. You can also provide a query string to search within node content.\n"
